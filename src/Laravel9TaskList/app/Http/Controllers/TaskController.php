@@ -3,12 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Folder;
 
 class TaskController extends Controller
 {
-    // indexメソッドを追加
+    
+    /**
+     *  【タスク一覧ページの表示機能】
+     *
+     *  GET /folders/{id}/tasks
+     *  @param int $id
+     *  @return \Illuminate\View\View
+     */
     public function index()
     {
-        return "hello world";
+        $folders = Folder::all();
+
+        return view('tasks/index', [
+            'folders' => $folders,
+        ]);
     }
 }
