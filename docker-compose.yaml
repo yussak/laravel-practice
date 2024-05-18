@@ -20,6 +20,12 @@ services:
       - db_my.cnf_test:/etc/mysql/conf.d/my.cnf
       - db_sql_test:/docker-entrypoint-initdb.d
 
+  mail:
+    image: mailhog/mailhog
+    container_name: "mailhog"
+    ports:
+      - 8025:8025
+
   php:
     build: ./docker/php
     container_name: "php-fpm"
